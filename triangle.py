@@ -2,7 +2,7 @@ import numpy as np
 import math
 
 class Triangle(object):
-    def __init__(self, point1:tuple, point2:tuple, point3:tuple):
+    def __init__(self, point1, point2, point3):
         if len(point1) != 3 or len(point1) != 3 or len(point1) != 3:
             raise ValueError("Error: Triangle lacks correct point definition.")
         else:
@@ -12,11 +12,8 @@ class Triangle(object):
     def __str__(self):
         return "Triangle"
     
-    def turnOn(self):
-        self.active = True
-
-    def turnOff(self):
-        self.active = False
+    def setActive(self, active):
+        self.active = active
         
     def givePoints2D(self):
         a = self.points
