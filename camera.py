@@ -5,7 +5,8 @@ class Camera(object):
         self.location = [x, y, z]
         self.rotation = [pan, tilt]
         self.FOV = 2*math.pi/3
-        self.camSpeed = 0.1
+        self.camSpeed = 0.01
+        self.camRotSpeed = math.pi/900
         ##self.FOVv = 4*math.pi/9
 
     def x(self):
@@ -30,8 +31,8 @@ class Camera(object):
         for point in triangle.points:
             a = math.atan((point[2] - self.z())/(point[0] - self.x()))
             ##print(a)
-            if a > self.pan() - (self.FOV/2) and a < self.pan() + (self.FOV/2):
-                if ((math.cos(self.pan()) < 0) == (point[0] - self.x()<0)) or ((math.sin(self.pan()) < 0) == (point[2] - self.z()<0)):
+            if (a > self.pan() - (self.FOV/2) and a < self.pan() + (self.FOV/2)) or(a + (math.pi*2) > self.pan() - (self.FOV/2) and a + (math.pi*2) < self.pan() + (self.FOV/2)):
+                ##if ((math.cos(self.pan()) < 0) == (point[0] - self.x()<0)) or ((math.sin(self.pan()) < 0) == (point[2] - self.z()<0)):
                     return True
         return False
 
@@ -66,7 +67,7 @@ class Camera(object):
         self.location[2] += math.sin(self.pan()) * self.camSpeed
 
     def moveLeft(self):
-        self.location[0] += math.sin(self.pan()) * self.camSpeed
+        self.location[0] -= math.sin(self.pan()) * self.camSpeed
         self.location[2] += math.cos(self.pan()) * self.camSpeed
 
     def moveBack(self):
@@ -74,10 +75,20 @@ class Camera(object):
         self.location[2] -= math.sin(self.pan()) * self.camSpeed
 
     def moveRight(self):
-        self.location[0] -= math.sin(self.pan()) * self.camSpeed
+        self.location[0] += math.sin(self.pan()) * self.camSpeed
         self.location[2] -= math.cos(self.pan()) * self.camSpeed
 
+    def moveUp(self):
+        self.location[1] += self.camSpeed
 
+    def moveDown(self):
+        self.location[1] -= self.camSpeed
 
+    def lookLeft(self):
+        self.rotation[0] += self.camRotSpeed
+        self.rotation[0] = self.rotation[0] % (math.pi*2)
 
-        
+    def lookRight(self):
+        self.rotation[0] -= self.camRotSpeed
+        self.rotation[0] = self.rotation[0] % (math.pi*2)
+

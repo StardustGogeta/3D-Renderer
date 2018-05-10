@@ -2,12 +2,13 @@ import numpy as np
 import math
 
 class Triangle(object):
-    def __init__(self, point1, point2, point3):
+    def __init__(self, point1, point2, point3, color = [255, 255, 255]):
         if len(point1) != 3 or len(point1) != 3 or len(point1) != 3:
             raise ValueError("Error: Triangle lacks correct point definition.")
         else:
             self.points = [point1, point2, point3];
         self.active = True
+        self.color = color
         
     def __str__(self):
         return "Triangle"
