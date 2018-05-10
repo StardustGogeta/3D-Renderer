@@ -92,3 +92,11 @@ class Camera(object):
         self.rotation[0] -= self.camRotSpeed
         self.rotation[0] = self.rotation[0] % (math.pi*2)
 
+    def lookUp(self):
+        if self.rotation[1] + self.camRotSpeed < math.pi/2:
+            self.rotation[1] += self.camRotSpeed
+
+    def lookDown(self):
+        if self.rotation[1] - self.camRotSpeed > -math.pi/2:
+            self.rotation[1] -= self.camRotSpeed
+

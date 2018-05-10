@@ -10,9 +10,10 @@ triangles.append(Triangle([10,-1,-1],[10,1,-1],[10,1,1], [255, 0, 255]))
 triangles.append(Triangle([10,-1,-1],[10,-1,1],[10,1,1]))
 triangles.append(Triangle([11,-1,-1],[11,1,-1],[11,1,1]))
 triangles.append(Triangle([11,-1,-1],[11,-1,1],[11,1,1]))
+triangles.append(Triangle([5, 0, 5],[6, 1, 6],[7, 4, 7]))
 for i in range(5):
-    triangles.append(Triangle([11+i,-1,-1],[11+i,1,-1],[11+i,1,1]))
-    triangles.append(Triangle([11+i,-1,-1],[11+i,-1,1],[11+i,1,1]))
+    triangles.append(Triangle([11+i,-1,-1],[11+i,1,-1],[11+i,1,1], [255 - 10*i, 255 - 10*i, 255 - 10*i]))
+    triangles.append(Triangle([11+i,-1,-1],[11+i,-1,1],[11+i,1,1], [255 - 10*i, 255 - 10*i, 255 - 10*i]))
 pygame.display.update()
 
 def updateFrame(screen, camera, triangles):
@@ -51,6 +52,10 @@ while gameExit != True:
         testCamera.lookLeft()
     if keys[pygame.K_e]:
         testCamera.lookRight()
+    if keys[pygame.K_i]:
+        testCamera.lookUp()
+    if keys[pygame.K_k]:
+        testCamera.lookDown()
     ##print(testCamera.rotation[0])
     updateFrame(screen, testCamera, triangles)
     ##print(testCamera.x(), testCamera.z())
