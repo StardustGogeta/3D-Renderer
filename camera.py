@@ -34,19 +34,29 @@ class Camera(object):
         return False
 
     def getPointLocation(self, point, screen):
-        ##the x y and z locations ralative to the camera
+        ##the x y and z locations relative to the camera
         x, y, z = point[0] - self.x(), point[1] - self.y(), point[2] - self.z()
-        angle = math.atan(z/x) - self.pan()
         w, h = screen.get_size()
-        theta = self.FOV/2
-        n = w/2
-        pxDis = sin(theta)/n
-        scalar = cos(theta)/cos(angle)
-        disX = math.round((scalar*sin(angle))/pixDis)
-        pixelX = n - disX
         vertFOV = self.FOV * (h/w)
+        theta = self.FOV/2
+        theta2 = vertFOV/2
+        n = w/2
+        n2 = h/2
+        pxDis = sin(theta)/n
+        pxDis2 = sin(theta2)/n2
+
+        angle = math.atan(z/x) - self.pan()
+        scalar = cos(theta)/cos(angle)
+        disX = round((scalar*sin(angle))/pixDis)
+        pixelX = n - disX
+        
         disFromScreen = math.sqrt(x*x + z*z)
-        angleVert = math.atan(y/disFromScreen) - self.pan()
+        angleVert = math.atan(y/disFromScreen) - self.tilt()
+        scalarVert = cos(theta2)/cos(angleVert)
+        disY = round((scalarVert*sin(angleVert))/pxDis2)
+        pixelY = n2 - disY
+
+        return [pixelX, pixelY]
 
     
         

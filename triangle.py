@@ -29,6 +29,9 @@ class Triangle(object):
         a, b, c = angleTo((self.points[0][0]-camera.x(), self.points[0][2]-camera.z())), angleTo((self.points[1][0]-camera.x(), self.points[1][2]-camera.z())), angleTo((self.points[2][0]-camera.x(), self.points[2][2]-camera.z()))
         return containsOrigin(a, b, c)
 
+    def render(self, camera, screen):
+        return [camera.getPointLocation(self.points[0], screen), camera.getPointLocation(self.points[1], screen), camera.getPointLocation(self.points[2], screen)]
+    
 def containsOrigin(a, b, c):
     return withinRange(a,b,c) or withinRange(b,c,a)
 
