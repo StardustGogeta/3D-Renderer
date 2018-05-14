@@ -5,8 +5,9 @@ class Triangle(object):
     def __init__(self, point1, point2, point3, color = [255, 255, 255]):
         if len(point1) != 3 or len(point1) != 3 or len(point1) != 3:
             raise ValueError("Error: Triangle lacks correct point definition.")
+            self.points = [[0,0,0],[0,0,0],[0,0,0]]
         else:
-            self.points = [point1, point2, point3];
+            self.points = [point1, point2, point3]
         self.active = True
         self.color = color
         
@@ -32,7 +33,11 @@ class Triangle(object):
 
     def avgDis(self, camera):
         c = camera
-        return sqrt((self.points[0] - c.x)**2 + (self.points[1] - c.y)**2 + (self.points[0] - c.z)**2)
+        temp = 0
+        for point in self.points:
+            temp += math.sqrt((point[0] - c.x)**2 + (point[1] - c.y)**2 + (point[2] - c.z)**2)
+            print(temp)
+        return temp/len(self.points)
     
 def containsOrigin(a, b, c):
     return withinRange(a,b,c) or withinRange(b,c,a)

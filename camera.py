@@ -38,7 +38,7 @@ class Camera(object):
             if point[0] - self.x < 0:
                 a += math.pi
             ##print(a)
-            if (a > self.pan - (self.FOV/2) and a < self.pan + (self.FOV/2)) or(a + (math.pi*2) > self.pan() - (self.FOV/2) and a + (math.pi*2) < self.pan() + (self.FOV/2)):
+            if (a > self.pan - (self.FOV/2) and a < self.pan + (self.FOV/2)) or(a + (math.pi*2) > self.pan - (self.FOV/2) and a + (math.pi*2) < self.pan + (self.FOV/2)):
                 ##if ((math.cos(self.pan()) < 0) == (point[0] - self.x()<0)) or ((math.sin(self.pan()) < 0) == (point[2] - self.z()<0)):
                     return True
         return False
@@ -65,7 +65,6 @@ class Camera(object):
         scalarVert = math.cos(theta2)/math.cos(angleVert)
         disY = round((scalarVert*math.sin(angleVert))/pxDis2)
         pixelY = n2 - disY
-
         return [pixelX, pixelY]
 
     

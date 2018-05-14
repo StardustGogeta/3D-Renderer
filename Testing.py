@@ -17,6 +17,7 @@ for i in range(5):
 pygame.display.update()
 
 def updateFrame(screen, camera, triangles):
+    sorted(triangles, key = lambda i: i.avgDis(camera))
     screen.fill([50,50,50])
     for triangle in triangles:
         ##print(triangle.render(camera, screen))
