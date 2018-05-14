@@ -24,11 +24,15 @@ class Triangle(object):
         self.active = camera.triangleInFrame(self)
 
     def coversCamera(self, camera):
-        a, b, c = angleTo((self.points[0][0]-camera.x(), self.points[0][2]-camera.z())), angleTo((self.points[1][0]-camera.x(), self.points[1][2]-camera.z())), angleTo((self.points[2][0]-camera.x(), self.points[2][2]-camera.z()))
+        a, b, c = angleTo((self.points[0][0]-camera.x, self.points[0][2]-camera.z)), angleTo((self.points[1][0]-camera.x, self.points[1][2]-camera.z)), angleTo((self.points[2][0]-camera.x, self.points[2][2]-camera.z))
         return containsOrigin(a, b, c)
 
     def render(self, camera, screen):
         return [camera.getPointLocation(self.points[0], screen), camera.getPointLocation(self.points[1], screen), camera.getPointLocation(self.points[2], screen)]
+
+    def avgDis(self, camera):
+        c = camera
+        return sqrt((self.points[0] - c.x)**2 + (self.points[1] - c.y)**2 + (self.points[0] - c.z)**2)
     
 def containsOrigin(a, b, c):
     return withinRange(a,b,c) or withinRange(b,c,a)
