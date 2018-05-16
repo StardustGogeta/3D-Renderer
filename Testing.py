@@ -6,18 +6,34 @@ testCamera = Camera()
 screen = pygame.display.set_mode((900,600))
 screen.fill([50,50,50])
 triangles = []
-triangles.append(Triangle([10,-1,-1],[10,1,-1],[10,1,1], [255, 0, 255]))
-triangles.append(Triangle([10,-1,-1],[10,-1,1],[10,1,1]))
-triangles.append(Triangle([11,-1,-1],[11,1,-1],[11,1,1]))
-triangles.append(Triangle([11,-1,-1],[11,-1,1],[11,1,1]))
-triangles.append(Triangle([5, 0, 5],[6, 1, 6],[7, 4, 7]))
-for i in range(5):
-    triangles.append(Triangle([11+i,-1,-1],[11+i,1,-1],[11+i,1,1], [255 - 10*i, 255 - 10*i, 255 - 10*i]))
-    triangles.append(Triangle([11+i,-1,-1],[11+i,-1,1],[11+i,1,1], [255 - 10*i, 255 - 10*i, 255 - 10*i]))
-pygame.display.update()
+##triangles.append(Triangle([10,-1,-1],[10,1,-1],[10,1,1], [255, 0, 255]))
+##triangles.append(Triangle([10,-1,-1],[10,-1,1],[10,1,1]))
+##triangles.append(Triangle([11,-1,-1],[11,1,-1],[11,1,1]))
+##triangles.append(Triangle([11,-1,-1],[11,-1,1],[11,1,1]))
+##triangles.append(Triangle([5, 0, 5],[6, 1, 6],[7, 4, 7]))
+##for i in range(5):
+##    triangles.append(Triangle([11+i,-1,-1],[11+i,1,-1],[11+i,1,1], [255 - 10*i, 255 - 10*i, 255 - 10*i]))
+##    triangles.append(Triangle([11+i,-1,-1],[11+i,-1,1],[11+i,1,1], [255 - 10*i, 255 - 10*i, 255 - 10*i]))
+##pygame.display.update()
+WHITE = [255,255,255]
+RED = [255,0,0]
+GREEN = [0,255,0]
+BLUE = [0,0,255]
+triangles.append(Triangle([10,1,1], [10,1,-1], [10,-1,1],WHITE))
+triangles.append(Triangle([10,-1,-1], [10,1,-1], [10,-1,1],WHITE))
+triangles.append(Triangle([8,1,1], [8,1,-1], [8,-1,1],WHITE))
+triangles.append(Triangle([8,-1,-1], [8,1,-1], [8,-1,1],WHITE))
+triangles.append(Triangle([8,1,1], [10,1,1], [8,1,-1],RED))
+triangles.append(Triangle([10,1,1], [10,1,-1], [8,1,-1],RED))
+triangles.append(Triangle([8,-1,1], [10,-1,1], [8,-1,-1],RED))
+triangles.append(Triangle([10,-1,1], [10,-1,-1], [8,-1,-1],RED))
+triangles.append(Triangle([8,-1,-1], [10,-1,-1], [10,1,-1],BLUE))
+triangles.append(Triangle([8,-1,-1], [8,1,-1], [10,1,-1],BLUE))
+triangles.append(Triangle([8,-1,1], [10,-1,1], [10,1,1],BLUE))
+triangles.append(Triangle([8,-1,1], [8,1,1], [10,1,1],BLUE))
 
 def updateFrame(screen, camera, triangles):
-    sorted(triangles, key = lambda i: i.avgDis(camera))
+    ##triangles = sorted(triangles, key = lambda triangle: triangle.avgDis(camera))
     screen.fill([50,50,50])
     for triangle in triangles:
         ##print(triangle.render(camera, screen))

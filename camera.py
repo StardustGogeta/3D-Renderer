@@ -60,6 +60,8 @@ class Camera(object):
         disX = round((scalar*math.sin(angle))/pxDis)
         pixelX = n - disX
         
+        if x < 0:
+            y *= -1
         disFromScreen = math.sqrt(x*x + z*z)*math.cos(angle)
         angleVert = math.atan(y/disFromScreen) - self.tilt
         scalarVert = math.cos(theta2)/math.cos(angleVert)
