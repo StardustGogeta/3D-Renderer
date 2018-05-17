@@ -37,6 +37,7 @@ class Triangle(object):
         for point in self.points:
             temp += math.sqrt((point[0] - c.x)**2 + (point[1] - c.y)**2 + (point[2] - c.z)**2)
             ##print(temp)
+        ##print(temp/len(self.points))
         return temp/len(self.points)
     
 def containsOrigin(a, b, c):
