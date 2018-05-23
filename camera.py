@@ -1,4 +1,6 @@
 import math
+from warnings import catch_warnings
+from symbol import except_clause
 
 class Camera(object):
     def __init__(self, x = 0, y = 0, z = 0, pan = 0, tilt = 0):
@@ -34,7 +36,11 @@ class Camera(object):
 ##        if triangle.coversCamera(self):
 ##            return False
         for point in triangle.points:
-            a = math.atan((point[2] - self.z)/(point[0] - self.x))
+            try:
+                a = math.atan((point[2] - self.z)/(point[0] - self.x))
+            except:
+                a = math.pi /2
+                
             if point[0] - self.x < 0:
                 a += math.pi
             ##print(a)
@@ -54,8 +60,12 @@ class Camera(object):
         n2 = h/2
         pxDis = math.sin(theta)/n
         pxDis2 = math.sin(theta2)/n2
-
-        angle = math.atan(z/x) - self.pan
+        
+        try:
+            angle = math.atan(z/x) - self.pan
+        except:
+            angle = math.pi /2 -self.pan; 
+        
         scalar = math.cos(theta)/math.cos(angle)
         disX = round((scalar*math.sin(angle))/pxDis)
         pixelX = n - disX
@@ -63,7 +73,10 @@ class Camera(object):
         if x < 0:
             y *= -1
         disFromScreen = math.sqrt(x*x + z*z)*math.cos(angle)
-        angleVert = math.atan(y/disFromScreen) - self.tilt
+        try:
+            angleVert = math.atan(y/disFromScreen) - self.tilt
+        except:
+            angleVert = math.pi/2 -self.tilt
         scalarVert = math.cos(theta2)/math.cos(angleVert)
         disY = round((scalarVert*math.sin(angleVert))/pxDis2)
         pixelY = n2 - disY

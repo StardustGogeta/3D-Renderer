@@ -20,7 +20,10 @@ GREY = [127,127,127]
 RED = [255,0,0]
 GREEN = [0,255,0]
 BLUE = [0,0,255]
-triangles.append(Triangle([10,1,1], [10,1,-1], [10,-1,1],WHITE))
+YELLOW = [255,255,0]
+BLACK = [0, 0 , 0 ]
+PURPLE = [255, 0, 255]
+'''triangles.append(Triangle([10,1,1], [10,1,-1], [10,-1,1],WHITE))
 triangles.append(Triangle([10,-1,-1], [10,1,-1], [10,-1,1],WHITE))
 triangles.append(Triangle([8,1,1], [8,1,-1], [8,-1,1],WHITE))
 triangles.append(Triangle([8,-1,-1], [8,1,-1], [8,-1,1],WHITE))
@@ -31,7 +34,21 @@ triangles.append(Triangle([10,-1,1], [10,-1,-1], [8,-1,-1],RED))
 triangles.append(Triangle([8,-1,-1], [10,-1,-1], [10,1,-1],BLUE))
 triangles.append(Triangle([8,-1,-1], [8,1,-1], [10,1,-1],BLUE))
 triangles.append(Triangle([8,-1,1], [10,-1,1], [10,1,1],BLUE))
-triangles.append(Triangle([8,-1,1], [8,1,1], [10,1,1],BLUE))
+triangles.append(Triangle([8,-1,1], [8,1,1], [10,1,1],BLUE))'''
+
+##triangles.append(Triangle([0,0,0], [1,0,0], [0,1,0], WHITE))
+'''triangles.append(Triangle([10,1,1], [10,1,-1], [10,-1,1],YELLOW))##Back
+triangles.append(Triangle([10,-1,-1], [10,1,-1], [10,-1,1],YELLOW))
+triangles.append(Triangle([1,0,1], [-1,0, 1], [1, 1,1],WHITE)) ##Front
+triangles.append(Triangle([1,1,1], [-1,0, 1], [-1,1,1],WHITE)) 
+triangles.append(Triangle([8,1,1], [10,1,1], [8,1,-1],RED)) ##Top
+triangles.append(Triangle([10,1,1], [10,1,-1], [8,1,-1],RED))
+triangles.append(Triangle([8,-1,1], [10,-1,1], [8,-1,-1],PURPLE)) ## Bottom
+triangles.append(Triangle([10,-1,1], [10,-1,-1], [8,-1,-1],PURPLE))
+triangles.append(Triangle([8,-1,-1], [10,-1,-1], [10,1,-1],BLUE)) ## Right side
+triangles.append(Triangle([8,-1,-1], [8,1,-1], [10,1,-1],BLUE))
+triangles.append(Triangle([8,-1,1], [10,-1,1], [10,1,1],GREEN)) ##Left Side
+triangles.append(Triangle([8,-1,1], [8,1,1], [10,1,1],GREEN))'''
 
 
 def updateFrame(screen, camera, triangles):
